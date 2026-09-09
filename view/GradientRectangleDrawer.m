@@ -269,10 +269,8 @@
   CGFloat inset = asContainer ? 4.0 : 3.0;
   NSRect textRect = NSInsetRect(rect, inset, inset);
   if (asContainer) {
-    // Keep the directory title readable without hiding the entire row of child blocks.
-    CGFloat headerWidth = MIN(NSWidth(rect), 240.0);
     NSRect headerRect = NSMakeRect(NSMinX(rect), NSMaxY(rect) - 20.0,
-                                   headerWidth, 20.0);
+                                   NSWidth(rect), 20.0);
     [self drawBasicFilledRect: headerRect
                       intColor: [self intValueForColor:
                                  [NSColor colorWithDeviceRed: 0.88
@@ -280,7 +278,7 @@
                                                         blue: 0.70
                                                        alpha: 1.0]]];
     textRect = NSMakeRect(NSMinX(rect) + inset, NSMaxY(rect) - 18.0,
-                          MAX(0, headerWidth - inset * 2), 14.0);
+                          MAX(0, NSWidth(rect) - inset * 2), 14.0);
   }
   BOOL showInlineSize = sizeText.length > 0 &&
                         (asContainer ? rect.size.width >= 110 : rect.size.width >= 180);
@@ -291,11 +289,8 @@
 
   if (!asContainer) {
     CGFloat labelHeight = showInlineSize ? 14.0 : (showSize ? 28.0 : 14.0);
-    // Directory headers are drawn after their children. Leave room below the header so a
-    // large child that reaches the directory's top edge keeps its label visible.
-    CGFloat headerClearance = rect.size.height >= 48.0 ? 20.0 : 0.0;
     textRect = NSMakeRect(NSMinX(rect) + inset,
-                          NSMaxY(rect) - inset - labelHeight - headerClearance,
+                          NSMaxY(rect) - inset - labelHeight,
                           MAX(0, NSWidth(rect) - inset * 2),
                           labelHeight);
   }

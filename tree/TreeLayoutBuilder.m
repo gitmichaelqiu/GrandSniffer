@@ -9,8 +9,10 @@
   - (void) layoutItemTree:(Item *)root
                    inRect:(NSRect)rect
                 traverser:(NSObject <TreeLayoutTraverser> *)traverser
-                    depth:(int)depth;
+                  depth:(int)depth;
 @end
+
+static const CGFloat DIRECTORY_TITLE_HEIGHT = 20.0;
 
 
 @implementation TreeLayoutBuilder
@@ -43,6 +45,12 @@
     Item  *sub1 = nil;
     Item  *sub2 = nil;
 
+    NSRect childRect = rect;
+    if (!root.isVirtual && ((FileItem *)root).isDirectory && depth > 0 &&
+        NSHeight(childRect) > DIRECTORY_TITLE_HEIGHT) {
+      childRect.size.height -= DIRECTORY_TITLE_HEIGHT;
+    }
+
     if (root.isVirtual) {
       sub1 = ((CompoundItem *)root).first;
       sub2 = ((CompoundItem *)root).second;
@@ -59,11 +67,11 @@
       NSRect  rect1;
       NSRect  rect2;
 
-      if (NSWidth(rect) > NSHeight(rect)) {
-        NSDivideRect(rect, &rect1, &rect2, ratio * NSWidth(rect), NSMaxXEdge);
+      if (NSWidth(childRect) > NSHeight(childRect)) {
+        NSDivideRect(childRect, &rect1, &rect2, ratio * NSWidth(childRect), NSMaxXEdge);
       }
       else {
-        NSDivideRect(rect, &rect1, &rect2, ratio * NSHeight(rect), NSMinYEdge);
+        NSDivideRect(childRect, &rect1, &rect2, ratio * NSHeight(childRect), NSMinYEdge);
       }
 
       [self layoutItemTree: sub1 inRect: rect1 traverser: traverser depth: depth];
@@ -72,7 +80,7 @@
     else if (sub1 != nil || sub2 != nil) {
       // This happens for directory items that contain only files or only sub-directories
       [self layoutItemTree: (sub1 != nil) ? sub1 : sub2
-                    inRect: rect
+                    inRect: childRect
                  traverser: traverser
                      depth: depth];
     }
