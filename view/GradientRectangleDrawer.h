@@ -59,6 +59,9 @@
 /* Draws a solid palette color without the GP gradient treatment. */
 - (void) drawFlatFilledRect:(NSRect)rect colorIndex:(NSUInteger)colorIndex;
 
+/* Returns the palette color used by a flat-filled rectangle. */
+- (NSColor *) colorForIndex:(NSUInteger)colorIndex;
+
 /* Draws the one-pixel separators used between Sniffer-style blocks. */
 - (void) drawBorderedRect:(NSRect)rect intColor:(UInt32)intColor;
 
@@ -67,5 +70,11 @@
           sizeText:(NSString *)sizeText
             inRect:(NSRect)rect
        asContainer:(BOOL)asContainer;
+
+- (void) drawLabel:(NSString *)label
+          sizeText:(NSString *)sizeText
+            inRect:(NSRect)rect
+       asContainer:(BOOL)asContainer
+         textColor:(NSColor *)textColor;
 
 @end

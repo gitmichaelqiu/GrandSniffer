@@ -201,6 +201,16 @@
   [self drawBasicFilledRect: rect intColor: intColor];
 }
 
+- (NSColor *) colorForIndex:(NSUInteger)colorIndex {
+  NSArray *colorKeys = colorPalette.allKeys;
+  if (colorIndex >= colorKeys.count) {
+    return NSColor.grayColor;
+  }
+
+  return [[colorPalette colorWithKey: colorKeys[colorIndex]]
+          colorUsingColorSpace: NSColorSpace.deviceRGBColorSpace];
+}
+
 - (void) drawBorderedRect:(NSRect)rect intColor:(UInt32)intColor {
   if (rect.size.width <= 1 || rect.size.height <= 1) {
     return;
@@ -223,6 +233,18 @@
           sizeText:(NSString *)sizeText
             inRect:(NSRect)rect
        asContainer:(BOOL)asContainer {
+  [self drawLabel: label
+         sizeText: sizeText
+           inRect: rect
+      asContainer: asContainer
+        textColor: [NSColor colorWithDeviceWhite: 0.05 alpha: 0.92]];
+}
+
+- (void) drawLabel:(NSString *)label
+          sizeText:(NSString *)sizeText
+            inRect:(NSRect)rect
+       asContainer:(BOOL)asContainer
+         textColor:(NSColor *)textColor {
   if (label.length == 0 || rect.size.width < (asContainer ? 64 : 38) ||
       rect.size.height < (asContainer ? 24 : 20)) {
     return;
@@ -258,7 +280,7 @@
 
   NSDictionary *attributes = @{
     NSFontAttributeName: font,
-    NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite: 0.05 alpha: 0.92],
+    NSForegroundColorAttributeName: textColor ?: [NSColor colorWithDeviceWhite: 0.05 alpha: 0.92],
     NSParagraphStyleAttributeName: paragraphStyle
   };
   NSAttributedString *attributedText = [[[NSAttributedString alloc] initWithString: text

@@ -13,6 +13,7 @@
 - (void) colorSchemeChanged:(NSNotification *)notification;
 - (void) updateColorMapper:(BOOL)forceRedraw;
 - (void) updateColorMapperForSettings:(TreeDrawerSettings *)settings;
+- (NSColor *) labelColorForBackgroundColor:(NSColor *)backgroundColor;
 
 @end // @interface TreeDrawer (PrivateMethod)
 
@@ -125,6 +126,8 @@
 }
 
 - (void) drawFileItem:(FileItem *)fileItem atRect:(NSRect) rect depth:(int) depth {
+  NSColor *labelColor = [NSColor colorWithDeviceWhite: 0.05 alpha: 0.92];
+
   if (fileItem.isDirectory) {
     [rectangleDrawer drawBasicFilledRect: rect intColor: directoryFillColor];
   }
@@ -134,14 +137,16 @@
                                                    numColors: rectangleDrawer.numGradientColors];
 
     [rectangleDrawer drawFlatFilledRect: rect colorIndex: colorIndex];
+    labelColor = [self labelColorForBackgroundColor: [rectangleDrawer colorForIndex: colorIndex]];
   }
   [rectangleDrawer drawBorderedRect: rect
                            intColor: [rectangleDrawer intValueForColor:
                                       [NSColor colorWithDeviceWhite: 0.12 alpha: 1.0]]];
   [rectangleDrawer drawLabel: fileItem.label
                     sizeText: [FileItem stringForFileItemSize: fileItem.itemSize]
-                      inRect: rect
-                 asContainer: NO];
+                    inRect: rect
+                 asContainer: NO
+                   textColor: labelColor];
 }
 
 - (void) drawDirectoryItem:(DirectoryItem *)directoryItem atRect:(NSRect) rect depth:(int) depth {
@@ -167,6 +172,17 @@
 @end // @implementation TreeDrawer
 
 @implementation TreeDrawer (PrivateMethods)
+
+- (NSColor *) labelColorForBackgroundColor:(NSColor *)backgroundColor {
+  NSColor *rgbColor = [backgroundColor colorUsingColorSpace: NSColorSpace.deviceRGBColorSpace];
+  CGFloat luminance = 0.2126 * rgbColor.redComponent
+                    + 0.7152 * rgbColor.greenComponent
+                    + 0.0722 * rgbColor.blueComponent;
+
+  return (luminance < 0.55)
+    ? [NSColor colorWithDeviceWhite: 1.0 alpha: 0.94]
+    : [NSColor colorWithDeviceWhite: 0.05 alpha: 0.92];
+}
 
 - (void) colorSchemeChanged:(NSNotification *)notification {
   // Force a redraw as the mapping change was due to an internal change impacting the scheme,
