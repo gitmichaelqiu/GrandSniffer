@@ -205,7 +205,7 @@ static const NSUInteger FOCUS_RESET_TAG = 105;
            
   [toolbar setAllowsUserCustomization: YES];
   [toolbar setAutosavesConfiguration: YES]; 
-  toolbar.displayMode = NSToolbarDisplayModeIconAndLabel;
+  toolbar.displayMode = NSToolbarDisplayModeIconOnly;
 
   toolbar.delegate = self;
   dirViewControl.window.toolbar = toolbar;
@@ -252,26 +252,19 @@ NSMutableDictionary  *createToolbarItemLookup = nil;
 }
 
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar*)toolbar {
-    return @[ToolbarZoom, ToolbarFocus,
-             NSToolbarSpaceItemIdentifier,
-             ToolbarOpenItem, ToolbarPreviewItem,
+    return @[ToolbarOpenItem, ToolbarPreviewItem,
              ToolbarRevealItem, ToolbarDeleteItem,
              NSToolbarSpaceItemIdentifier,
              ToolbarRescan,
-             NSToolbarFlexibleSpaceItemIdentifier,
-             ToolbarSearch,
-             ToolbarShowInfo];
+             NSToolbarFlexibleSpaceItemIdentifier];
 }
 
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar*)toolbar {
-    return @[ToolbarZoom, ToolbarFocus,
-             ToolbarOpenItem, ToolbarPreviewItem,
-             ToolbarRevealItem, ToolbarDeleteItem,
-             ToolbarRescan,
-             ToolbarShowInfo,
-             ToolbarSearch,
-             NSToolbarSpaceItemIdentifier,
-             NSToolbarFlexibleSpaceItemIdentifier];
+  return @[ToolbarOpenItem, ToolbarPreviewItem,
+           ToolbarRevealItem, ToolbarDeleteItem,
+           ToolbarRescan,
+           NSToolbarSpaceItemIdentifier,
+           NSToolbarFlexibleSpaceItemIdentifier];
 }
 
 @end
@@ -731,5 +724,4 @@ NSMutableDictionary  *createToolbarItemLookup = nil;
 }
 
 @end // @implementation SelectorObject
-
 
