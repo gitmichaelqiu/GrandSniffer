@@ -169,6 +169,7 @@
 		AAEF440C10821A3800468832 /* FilterTestRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF440B10821A3800468832 /* FilterTestRepository.m */; };
 		AAEF442510821EC800468832 /* FileItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF442410821EC800468832 /* FileItemTest.m */; };
 		AAF951B10EDEE2E100844FD5 /* DirectoryViewToolbarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF951B00EDEE2E100844FD5 /* DirectoryViewToolbarControl.m */; };
+		D1A0B0012FA0000000010001 /* GrandSnifferCommandBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A0B0022FA0000000010001 /* GrandSnifferCommandBar.swift */; };
 		AAFB1194238ABF3B00D616C3 /* TreeWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB1193238ABF3B00D616C3 /* TreeWriter.m */; };
 		AAFB1197238AD5E900D616C3 /* RawTreeWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB1196238AD5E900D616C3 /* RawTreeWriter.m */; };
 		D009CBD92FA5E45B00AC19E9 /* GrandPerspectiveLogo.icon in Resources */ = {isa = PBXBuildFile; fileRef = D009CBD82FA5E45B00AC19E9 /* GrandPerspectiveLogo.icon */; };
@@ -683,6 +684,7 @@
 		AAF56B1C097441C700A89601 /* GrandPerspective_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GrandPerspective_Prefix.pch; sourceTree = "<group>"; };
 		AAF951AF0EDEE2E100844FD5 /* DirectoryViewToolbarControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectoryViewToolbarControl.h; path = control/DirectoryViewToolbarControl.h; sourceTree = "<group>"; };
 		AAF951B00EDEE2E100844FD5 /* DirectoryViewToolbarControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DirectoryViewToolbarControl.m; path = control/DirectoryViewToolbarControl.m; sourceTree = "<group>"; };
+		D1A0B0022FA0000000010001 /* GrandSnifferCommandBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GrandSnifferCommandBar.swift; path = control/GrandSnifferCommandBar.swift; sourceTree = "<group>"; };
 		AAF9F7D30B30118C00FA4C51 /* ControlConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlConstants.h; path = control/ControlConstants.h; sourceTree = "<group>"; };
 		AAFB1192238ABF3B00D616C3 /* TreeWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeWriter.h; sourceTree = "<group>"; };
 		AAFB1193238ABF3B00D616C3 /* TreeWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeWriter.m; sourceTree = "<group>"; };
@@ -1044,6 +1046,7 @@
 				AA59E3B023C3443F006A5184 /* DirectoryViewDisplaySettings.m */,
 				AAF951AF0EDEE2E100844FD5 /* DirectoryViewToolbarControl.h */,
 				AAF951B00EDEE2E100844FD5 /* DirectoryViewToolbarControl.m */,
+				D1A0B0022FA0000000010001 /* GrandSnifferCommandBar.swift */,
 				AA59E3AC23C334EB006A5184 /* ControlPanelControl.h */,
 				AA59E3AD23C334EB006A5184 /* ControlPanelControl.m */,
 				AA52461B110202F50018897B /* FiltersWindowControl.h */,
@@ -1369,6 +1372,7 @@
 				AA280136284BA33900E9EB7A /* TreeMonitor.m in Sources */,
 				AAA4FF1723C8FA7200A51C97 /* WindowManager.m in Sources */,
 				AAF951B10EDEE2E100844FD5 /* DirectoryViewToolbarControl.m in Sources */,
+				D1A0B0012FA0000000010001 /* GrandSnifferCommandBar.swift in Sources */,
 				AAB90800249A98C000681E2E /* OverlayDrawTaskExecutor.m in Sources */,
 				AA819B431D5F9A7D003C7139 /* TreeVisitingProgressTracker.m in Sources */,
 				AAA6E72D0EFD29CB00B4E71E /* ToolbarSegmentedCell.m in Sources */,
@@ -1825,6 +1829,7 @@
 				MARKETING_VERSION = 3.8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Development;
 		};
@@ -1865,6 +1870,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 3.8.0;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Deployment;
 		};
@@ -1905,6 +1911,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 3.8.0;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Default;
 		};
@@ -1937,6 +1944,7 @@
 				PRODUCT_NAME = GrandPerspective;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -1968,6 +1976,7 @@
 				PRODUCT_NAME = GrandPerspective;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -1998,6 +2007,7 @@
 				PRODUCT_NAME = GrandPerspective;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};

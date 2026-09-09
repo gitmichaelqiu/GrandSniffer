@@ -23,6 +23,8 @@ extern NSString  *ViewWillCloseEvent;
   IBOutlet NSTextField  *itemPathField;
   IBOutlet NSTextField  *itemSizeField;
   IBOutlet DirectoryView  *mainView;
+  IBOutlet NSView  *commandBarContainer;
+  NSView  *commandBarView;
   
   ItemPathModelView  *pathModelView;
   TreeContext  *treeContext;

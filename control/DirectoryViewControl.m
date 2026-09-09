@@ -24,6 +24,7 @@
 #import "SelectiveItemTest.h"
 
 #import "LogManager.h"
+#import "GrandPerspective-Swift.h"
 
 
 NSString  *DeleteNothing = @"delete nothing";
@@ -32,6 +33,9 @@ NSString  *DeleteFilesAndFolders = @"delete files and folders";
 
 NSString  *ViewWillOpenEvent = @"viewWillOpen";
 NSString  *ViewWillCloseEvent = @"viewWillClose";
+
+static NSString * const GrandSnifferCommandNotification = @"GrandSnifferCommand";
+static NSString * const GrandSnifferCommandBarStateNotification = @"GrandSnifferCommandBarState";
 
 
 #define NOTE_IT_MAY_NOT_EXIST_ANYMORE \
@@ -71,6 +75,8 @@ NSString  *ViewWillCloseEvent = @"viewWillClose";
 - (void) updateSelectionInStatusbar:(NSString *)itemSizeString;
 - (void) showStatusUpdateMessage:(NSString *)message;
 - (void) validateControls;
+- (void) updateCommandBarState;
+- (void) grandSnifferCommand:(NSNotification *)notification;
 
 - (void) updateFileDeletionSupport;
 
@@ -165,6 +171,8 @@ NSString  *ViewWillCloseEvent = @"viewWillClose";
 
   [_previewPanel release];
 
+  [commandBarView release];
+
   [customOpenApp release];
   [customRevealApp release];
   
@@ -215,6 +223,19 @@ NSString  *ViewWillCloseEvent = @"viewWillClose";
   // Miscellaneous initialisation
 
   [super windowDidLoad];
+
+  if (@available(macOS 11.0, *)) {
+    if (commandBarContainer != nil) {
+      commandBarView = [[GrandSnifferCommandBarFactory makeView] retain];
+      [commandBarContainer addSubview: commandBarView];
+      [NSLayoutConstraint activateConstraints: @[
+        [commandBarView.leadingAnchor constraintEqualToAnchor: commandBarContainer.leadingAnchor],
+        [commandBarView.trailingAnchor constraintEqualToAnchor: commandBarContainer.trailingAnchor],
+        [commandBarView.topAnchor constraintEqualToAnchor: commandBarContainer.topAnchor],
+        [commandBarView.bottomAnchor constraintEqualToAnchor: commandBarContainer.bottomAnchor]
+      ]];
+    }
+  }
   
   NSAssert(invisiblePathName == nil, @"invisiblePathName unexpectedly set.");
   FileItem  *visibleTree = pathModelView.visibleTree;
@@ -246,6 +267,10 @@ NSString  *ViewWillCloseEvent = @"viewWillClose";
          selector: @selector(displayFocusChanged:)
              name: DisplayFocusChangedEvent
            object: mainView];
+  [nc addObserver: self
+         selector: @selector(grandSnifferCommand:)
+             name: GrandSnifferCommandNotification
+           object: nil];
 
   [userDefaults addObserver: self 
                  forKeyPath: FileDeletionTargetsKey
@@ -888,11 +913,90 @@ NSString  *ViewWillCloseEvent = @"viewWillClose";
   }
 }
 
+- (void) grandSnifferCommand:(NSNotification *)notification {
+  NSString *command = notification.userInfo[@"command"];
+
+  if ([command isEqualToString: @"zoomOut"]) {
+    [mainView zoomOut: self];
+  }
+  else if ([command isEqualToString: @"zoomIn"]) {
+    [mainView zoomIn: self];
+  }
+  else if ([command isEqualToString: @"resetZoom"]) {
+    [mainView resetZoom: self];
+  }
+  else if ([command isEqualToString: @"focusPrevious"]) {
+    if (self.isSelectedFileLocked) {
+      [mainView moveSelectionFocusUp: self];
+    }
+    else {
+      [mainView moveDisplayFocusUp: self];
+    }
+  }
+  else if ([command isEqualToString: @"focusNext"]) {
+    if (self.isSelectedFileLocked) {
+      [mainView moveSelectionFocusDown: self];
+    }
+    else {
+      [mainView moveDisplayFocusDown: self];
+    }
+  }
+  else if ([command isEqualToString: @"resetFocus"]) {
+    if (self.isSelectedFileLocked) {
+      [mainView resetSelectionFocus: self];
+    }
+    else {
+      [mainView resetDisplayFocus: self];
+    }
+  }
+  else if ([command isEqualToString: @"search"]) {
+    [self searchForFiles: notification.userInfo[@"query"] ?: @""];
+  }
+  else if ([command isEqualToString: @"showInfo"]) {
+    [self showInfo: self];
+  }
+
+  [self validateControls];
+}
+
+- (void) updateCommandBarState {
+  if (commandBarView == nil) return;
+
+  BOOL focusPrevious;
+  BOOL focusNext;
+  BOOL resetFocus;
+
+  if (self.isSelectedFileLocked) {
+    focusPrevious = mainView.canMoveSelectionFocusUp;
+    focusNext = mainView.canMoveSelectionFocusDown;
+    resetFocus = mainView.canResetSelectionFocus;
+  }
+  else {
+    focusPrevious = mainView.canMoveDisplayFocusUp;
+    focusNext = mainView.canMoveDisplayFocusDown;
+    resetFocus = mainView.canResetDisplayFocus;
+  }
+
+  NSDictionary *state = @{
+    @"canZoomOut": @(mainView.canZoomOut),
+    @"canZoomIn": @(mainView.canZoomIn),
+    @"canResetZoom": @(mainView.canResetZoom),
+    @"canFocusPrevious": @(focusPrevious),
+    @"canFocusNext": @(focusNext),
+    @"canResetFocus": @(resetFocus)
+  };
+
+  [NSNotificationCenter.defaultCenter postNotificationName: GrandSnifferCommandBarStateNotification
+                                                      object: self
+                                                    userInfo: state];
+}
+
 - (void) validateControls {
   // Note: Maybe not strictly necessary, as toolbar seems to frequently auto-update its visible
   // items (unnecessarily often it seems). Nevertheless, it's good to do so explicitly, in response
   // to relevant events.
   [self.window.toolbar validateVisibleItems];
+  [self updateCommandBarState];
 }
 
 
