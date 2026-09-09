@@ -1,12 +1,18 @@
-# About GrandPerspective
-GrandPerspective is a small utility for macOS that visualizes disk usage by way
-of tree maps. This can help you to manage your disk, as you can easily spot
-which files and folders take up the most space.
+# About GrandSniffer
+GrandSniffer is a macOS disk-usage visualizer derived from
+[GrandPerspective][]. It keeps GrandPerspective's scanning and file-management
+features while developing a more SpaceSniffer-like scanned-view interface.
+
+GrandSniffer is an independent project and is not affiliated with or endorsed
+by GrandPerspective or SpaceSniffer.
 
 # License
 
-GrandPerspective has been released as Open Source under the GNU General Public
-License. See LICENSE for details.
+This repository contains modified GrandPerspective source code, released under
+the GNU General Public License version 2 or later. The upstream license text,
+copyright notices, and contributor credits are preserved in this repository.
+GrandSniffer's interface modifications are Copyright (C) 2026 Michael Y. Qiu
+and are distributed under the same license. See LICENSE for details.
 
 # How to contribute
 
@@ -22,6 +28,7 @@ For more information about the application, please visit the
 [GrandPerspective website][].
 
 [GrandPerspective website]: http://grandperspectiv.sourceforge.net
+[GrandPerspective]: http://grandperspectiv.sourceforge.net
 [bug reports]: https://sourceforge.net/p/grandperspectiv/bugs/
 [feature requests]: https://sourceforge.net/p/grandperspectiv/feature-requests/
 [translations]: https://grandperspectiv.sourceforge.net/#localization
