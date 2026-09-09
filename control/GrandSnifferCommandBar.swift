@@ -66,10 +66,11 @@ private struct GrandSnifferCommandBarView: View {
                     enabled: state.canResetZoom
                 )
             }
-            .padding(.horizontal, 4)
+            .padding(.horizontal, 3)
+            .padding(.vertical, 2)
             .background(
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(Color.primary.opacity(0.08))
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(.regularMaterial)
             )
 
             Divider()
@@ -95,10 +96,11 @@ private struct GrandSnifferCommandBarView: View {
                     enabled: state.canResetFocus
                 )
             }
-            .padding(.horizontal, 4)
+            .padding(.horizontal, 3)
+            .padding(.vertical, 2)
             .background(
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(Color.primary.opacity(0.08))
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(.regularMaterial)
             )
 
             Divider()
@@ -111,7 +113,7 @@ private struct GrandSnifferCommandBarView: View {
             } label: {
                 Image(systemName: "magnifyingglass")
             }
-            .buttonStyle(.borderless)
+            .buttonStyle(.bordered)
             .controlSize(.small)
             .help("Search files")
             .accessibilityLabel("Search files")
@@ -139,7 +141,7 @@ private struct GrandSnifferCommandBarView: View {
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.primary.opacity(0.04))
+        .background(Color(nsColor: .windowBackgroundColor))
         .onReceive(
             NotificationCenter.default.publisher(for: .grandSnifferCommandBarState)
         ) { notification in
@@ -176,7 +178,7 @@ private struct GrandSnifferCommandBarView: View {
         } label: {
             Image(systemName: systemImage)
         }
-        .buttonStyle(.borderless)
+        .buttonStyle(.bordered)
         .controlSize(.small)
         .help(title)
         .accessibilityLabel(title)
