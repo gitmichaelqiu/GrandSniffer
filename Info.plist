@@ -74,7 +74,7 @@
 		<key>defaultColorGradient</key>
 		<real>0.5</real>
 		<key>defaultColorMapping</key>
-		<string>folder</string>
+		<string>extension</string>
 		<key>defaultColorPalette</key>
 		<string>CoffeeBeans</string>
 		<key>defaultDisplayFocus</key>
