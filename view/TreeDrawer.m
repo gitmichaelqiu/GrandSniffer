@@ -38,6 +38,11 @@
     freeSpaceColor = [rectangleDrawer intValueForColor: NSColor.blackColor];
     usedSpaceColor = [rectangleDrawer intValueForColor: NSColor.darkGrayColor];
     visibleTreeBackgroundColor = [rectangleDrawer intValueForColor: NSColor.grayColor];
+    directoryFillColor = [rectangleDrawer intValueForColor:
+                          [NSColor colorWithDeviceRed: 0.74
+                                                green: 0.62
+                                                 blue: 0.47
+                                                alpha: 1.0]];
   }
   return self;
 }
@@ -120,11 +125,16 @@
 }
 
 - (void) drawFileItem:(FileItem *)fileItem atRect:(NSRect) rect depth:(int) depth {
-  NSUInteger  hash = [_colorMapper hashForFileItem: fileItem atDepth: depth];
-  NSUInteger  colorIndex = [_colorMapper colorIndexForHash: hash
-                                                 numColors: rectangleDrawer.numGradientColors];
+  if (fileItem.isDirectory) {
+    [rectangleDrawer drawBasicFilledRect: rect intColor: directoryFillColor];
+  }
+  else {
+    NSUInteger  hash = [_colorMapper hashForFileItem: fileItem atDepth: depth];
+    NSUInteger  colorIndex = [_colorMapper colorIndexForHash: hash
+                                                   numColors: rectangleDrawer.numGradientColors];
 
-  [rectangleDrawer drawFlatFilledRect: rect colorIndex: colorIndex];
+    [rectangleDrawer drawFlatFilledRect: rect colorIndex: colorIndex];
+  }
   [rectangleDrawer drawBorderedRect: rect
                            intColor: [rectangleDrawer intValueForColor:
                                       [NSColor colorWithDeviceWhite: 0.12 alpha: 1.0]]];

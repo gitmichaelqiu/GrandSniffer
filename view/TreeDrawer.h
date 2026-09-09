@@ -18,6 +18,7 @@ extern NSString  *ColorMappingChangedEvent;
   UInt32  freeSpaceColor;
   UInt32  usedSpaceColor;
   UInt32  visibleTreeBackgroundColor;
+  UInt32  directoryFillColor;
 }
 
 - (instancetype) initWithScanTree:(DirectoryItem *)scanTree
