@@ -13,6 +13,8 @@
 @end
 
 static const CGFloat DIRECTORY_TITLE_HEIGHT = 20.0;
+static const CGFloat DIRECTORY_TITLE_MIN_WIDTH = 64.0;
+static const CGFloat DIRECTORY_TITLE_MIN_HEIGHT = 24.0;
 
 
 @implementation TreeLayoutBuilder
@@ -47,7 +49,8 @@ static const CGFloat DIRECTORY_TITLE_HEIGHT = 20.0;
 
     NSRect childRect = rect;
     if (!root.isVirtual && ((FileItem *)root).isDirectory && depth > 0 &&
-        NSHeight(childRect) > DIRECTORY_TITLE_HEIGHT) {
+        NSWidth(childRect) >= DIRECTORY_TITLE_MIN_WIDTH &&
+        NSHeight(childRect) >= DIRECTORY_TITLE_MIN_HEIGHT) {
       childRect.size.height -= DIRECTORY_TITLE_HEIGHT;
     }
 
