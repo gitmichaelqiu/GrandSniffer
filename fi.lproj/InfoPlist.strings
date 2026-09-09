@@ -1,5 +1,5 @@
 /* (No Comment) */
-"GrandPerspective scan results" = "GrandPerspective skannin tulokset";
+"GrandSniffer scan results" = "GrandSniffer skannin tulokset";
 
 /* Privacy - Desktop Folder Usage Description */
 "NSDesktopFolderUsageDescription" = "Ohjelma tarkistaa miten paljon levytilaa Työpöytä käyttää";
@@ -15,4 +15,3 @@
 
 /* Privacy - Reminders Usage Description */
 "NSRemindersUsageDescription" = "Ohjelma tarkistaa miten paljon levytilaa Muistutukset käyttää";
-

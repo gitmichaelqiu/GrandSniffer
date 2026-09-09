@@ -179,7 +179,7 @@
 /* Begin PBXFileReference section */
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* GrandPerspective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrandPerspective.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* GrandSniffer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrandSniffer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0490351CFB3A4200ADAA76 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/FilterSelectionPanel.strings; sourceTree = "<group>"; };
 		AA0490361CFB3A4200ADAA76 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/PreferencesPanel.strings; sourceTree = "<group>"; };
 		AA0490371CFB3A4300ADAA76 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/UniformTypeRankingWindow.strings; sourceTree = "<group>"; };
@@ -725,7 +725,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* GrandPerspective.app */,
+				8D1107320486CEB800E47090 /* GrandSniffer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1176,7 +1176,7 @@
 			name = GrandPerspective;
 			productInstallPath = "$(HOME)/Applications";
 			productName = DirectoryView;
-			productReference = 8D1107320486CEB800E47090 /* GrandPerspective.app */;
+			productReference = 8D1107320486CEB800E47090 /* GrandSniffer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1941,7 +1941,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 3.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.grandperspectiv;
-				PRODUCT_NAME = GrandPerspective;
+				PRODUCT_NAME = GrandSniffer;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -1973,7 +1973,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 3.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.grandperspectiv;
-				PRODUCT_NAME = GrandPerspective;
+				PRODUCT_NAME = GrandSniffer;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -2004,7 +2004,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 3.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.grandperspectiv;
-				PRODUCT_NAME = GrandPerspective;
+				PRODUCT_NAME = GrandSniffer;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;

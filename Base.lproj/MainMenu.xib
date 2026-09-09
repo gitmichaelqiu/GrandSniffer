@@ -14,10 +14,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
-                <menuItem title="GrandPerspective" id="56">
-                    <menu key="submenu" title="GrandPerspective" systemMenu="apple" id="57">
+                <menuItem title="GrandSniffer" id="56">
+                    <menu key="submenu" title="GrandSniffer" systemMenu="apple" id="57">
                         <items>
-                            <menuItem title="About GrandPerspective" id="58">
+                            <menuItem title="About GrandSniffer" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
@@ -50,7 +50,7 @@
                             <menuItem isSeparatorItem="YES" id="428">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Hide GrandPerspective" keyEquivalent="h" id="134">
+                            <menuItem title="Hide GrandSniffer" keyEquivalent="h" id="134">
                                 <connections>
                                     <action selector="hide:" target="-2" id="152"/>
                                 </connections>
@@ -69,7 +69,7 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Quit GrandPerspective" keyEquivalent="q" id="136">
+                            <menuItem title="Quit GrandSniffer" keyEquivalent="q" id="136">
                                 <connections>
                                     <action selector="terminate:" target="-2" id="139"/>
                                 </connections>
@@ -379,7 +379,7 @@
                                     <action selector="openWebsite:" target="222" id="346"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="GrandPerspective Help" keyEquivalent="?" id="111">
+                            <menuItem title="GrandSniffer Help" keyEquivalent="?" id="111">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="122"/>
                                 </connections>

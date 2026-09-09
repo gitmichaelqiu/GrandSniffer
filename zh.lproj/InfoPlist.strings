@@ -1,5 +1,5 @@
 /* (No Comment) */
-"GrandPerspective scan results" = "GrandPerspective扫描结果";
+"GrandSniffer scan results" = "GrandSniffer扫描结果";
 
 /* Privacy - Desktop Folder Usage Description */
 "NSDesktopFolderUsageDescription" = "由App用于显示您的桌面占用的磁盘空间大小";
@@ -18,4 +18,3 @@
 
 /* Privacy - Reminders Usage Description */
 "NSRemindersUsageDescription" = "由App用于显示您的备忘录占用的磁盘空间大小";
-

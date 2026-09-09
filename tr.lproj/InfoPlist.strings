@@ -1,5 +1,5 @@
 /* (No Comment) */
-"GrandPerspective scan results" = "GrandPerspective tarama sonuçları";
+"GrandSniffer scan results" = "GrandSniffer tarama sonuçları";
 
 /* Privacy - Desktop Folder Usage Description */
 "NSDesktopFolderUsageDescription" = "Bu uygulama, Masaüstü klasörünüzün ne kadar disk alanı kullandığını denetler";
@@ -15,4 +15,3 @@
 
 /* Privacy - Reminders Usage Description */
 "NSRemindersUsageDescription" = "Bu uygulama, Anımsatıcılar’ın ne kadar disk alanı kullandığını denetler";
-

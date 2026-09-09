@@ -1,5 +1,5 @@
 /* (No Comment) */
-"GrandPerspective scan results" = "Resultados del escaneo de GrandPrespective";
+"GrandSniffer scan results" = "Resultados del escaneo de GrandSniffer";
 
 /* Privacy - Desktop Folder Usage Description */
 "NSDesktopFolderUsageDescription" = "La aplicación comprueba cuanto espacio de disco utiliza Escritorio";
@@ -15,4 +15,3 @@
 
 /* Privacy - Reminders Usage Description */
 "NSRemindersUsageDescription" = "La aplicación comprueba cuanto espacio de disco utiliza Recordatorios";
-

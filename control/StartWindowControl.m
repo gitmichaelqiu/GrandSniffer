@@ -346,7 +346,7 @@ NSString*  checkFdaPermissionsPath = @"~/Library/Safari";
   alert.messageText = NSLocalizedString(@"Disk access required", @"FDA warning sheet");
 
   alert.informativeText = NSLocalizedString
-    (@"GrandPerspective needs full access to your disk for optimal scan performance. Please select your main volume (e.g. Macintosh HD) in the following prompt.",
+    (@"GrandSniffer needs full access to your disk for optimal scan performance. Please select your main volume (e.g. Macintosh HD) in the following prompt.",
      @"FDA warning sheet");
 
   [alert beginSheetModalForWindow: self.window completionHandler: ^(NSModalResponse returnCode) {
@@ -364,7 +364,7 @@ NSString*  checkFdaPermissionsPath = @"~/Library/Safari";
   [alert addButtonWithTitle: CONTINUE_BUTTON_TITLE];
 
   alert.messageText = NSLocalizedString
-    (@"GrandPerspective seems to lack Full Disk Access permissions",
+    (@"GrandSniffer seems to lack Full Disk Access permissions",
     @"FDA warning alert");
 
   alert.informativeText = NSLocalizedString

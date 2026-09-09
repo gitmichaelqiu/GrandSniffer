@@ -41,7 +41,7 @@
 "33Q-IV-RrZ.title" = "Άνοιγμα";
 
 /* Class = "NSMenuItem"; title = "About GrandPerspective"; ObjectID = "58"; */
-"58.title" = "Σχετικά με το GrandPerspective";
+"58.title" = "Σχετικά με το GrandSniffer";
 
 /* Class = "NSMenuItem"; title = "Scan Folder..."; ObjectID = "72"; */
 "72.title" = "Σάρωση φακέλου...";
@@ -59,16 +59,16 @@
 "106.title" = "Βοήθεια";
 
 /* Class = "NSMenuItem"; title = "GrandPerspective Help"; ObjectID = "111"; */
-"111.title" = "Βοήθεια για το GrandPerspective";
+"111.title" = "Βοήθεια για το GrandSniffer";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
 "129.title" = "Προτιμήσεις";
 
 /* Class = "NSMenuItem"; title = "Hide GrandPerspective"; ObjectID = "134"; */
-"134.title" = "Απόκρυψη GrandPerspective";
+"134.title" = "Απόκρυψη GrandSniffer";
 
 /* Class = "NSMenuItem"; title = "Quit GrandPerspective"; ObjectID = "136"; */
-"136.title" = "Κλείσιμο GrandPerspective";
+"136.title" = "Κλείσιμο GrandSniffer";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
 "145.title" = "Απόκρυψη άλλων";
@@ -222,4 +222,3 @@
 
 /* Class = "NSMenuItem"; title = "Reset Zoom"; ObjectID = "y2y-vX-zhd"; */
 "y2y-vX-zhd.title" = "Επαναφορά μεγέθυνσης";
-

@@ -1,5 +1,5 @@
 /* (No Comment) */
-"GrandPerspective scan results" = "Αποτελέσματα σάρωσης GrandPerspective";
+"GrandSniffer scan results" = "Αποτελέσματα σάρωσης GrandSniffer";
 
 /* Privacy - Desktop Folder Usage Description */
 "NSDesktopFolderUsageDescription" = "Η εφαρμογή ελέγχει πόσο χώρο στο δίσκο χρησιμοποιεί η επιφάνεια εργασίας σας";
@@ -15,4 +15,3 @@
 
 /* Privacy - Reminders Usage Description */
 "NSRemindersUsageDescription" = "Η εφαρμογή ελέγχει πόσο χώρο στο δίσκο χρησιμοποιούν οι υπομνήσεις σας (Reminders)";
-

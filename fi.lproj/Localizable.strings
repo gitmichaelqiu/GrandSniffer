@@ -245,10 +245,10 @@
 "GB" = "Gt";
 
 /* FDA warning sheet */
-"GrandPerspective needs full access to your disk for optimal scan performance. Please select your main volume (e.g. Macintosh HD) in the following prompt." = "GrandPerspective tarvitsee täyden pääsyn levyllesi optimaalisen skannaussuorituskyvyn saavuttamiseksi. Valitse seuraavassa kehotteessa päälevysi (esim. Macintosh HD).";
+"GrandSniffer needs full access to your disk for optimal scan performance. Please select your main volume (e.g. Macintosh HD) in the following prompt." = "GrandSniffer tarvitsee täyden pääsyn levyllesi optimaalisen skannaussuorituskyvyn saavuttamiseksi. Valitse seuraavassa kehotteessa päälevysi (esim. Macintosh HD).";
 
 /* FDA warning alert */
-"GrandPerspective seems to lack Full Disk Access permissions" = "Vaikuttaa siltä, että GrandPerspectivella ei ole Täysi levyn käyttö -oikeutta";
+"GrandSniffer seems to lack Full Disk Access permissions" = "Vaikuttaa siltä, että GrandSnifferilla ei ole Täysi levyn käyttö -oikeutta";
 
 /* Menu item */
 "Hide Control Panel" = "Piilota hallintapaneeli";
@@ -474,4 +474,3 @@
 
 /* Parse error */
 "Unrecognized value" = "Tunnistamaton arvo";
-

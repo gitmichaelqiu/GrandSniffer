@@ -1,5 +1,5 @@
 /* (No Comment) */
-"GrandPerspective scan results" = "GrandPerspective data";
+"GrandSniffer scan results" = "GrandSniffer data";
 
 /* Privacy - Desktop Folder Usage Description */
 "NSDesktopFolderUsageDescription" = "Hiermee kan de app visualiseren hoeveel diskruimte uw buroblad inneemt";
@@ -15,4 +15,3 @@
 
 /* Privacy - Reminders Usage Description */
 "NSRemindersUsageDescription" = "Hiermee kan de app visualiseren hoeveel diskruimte uw reminders innemen";
-

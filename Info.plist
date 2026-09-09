@@ -5,9 +5,9 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © Eriban Software, 2005-2026</string>
 	<key>CFBundleDisplayName</key>
-	<string>GrandPerspective</string>
+	<string>GrandSniffer</string>
 	<key>CFBundleName</key>
-	<string>GrandPerspective</string>
+	<string>GrandSniffer</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDocumentTypes</key>
@@ -28,7 +28,7 @@
 			<key>CFBundleTypeIconFile</key>
 			<string>GrandPerspectiveScan.icns</string>
 			<key>CFBundleTypeName</key>
-			<string>GrandPerspective scan results</string>
+			<string>GrandSniffer scan results</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -44,11 +44,11 @@
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>GrandPerspective</string>
+	<string>GrandSniffer</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>GrandPerspectiveHelp</string>
 	<key>CFBundleHelpBookName</key>
-	<string>GrandPerspective Help</string>
+	<string>GrandSniffer Help</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -390,7 +390,7 @@
 			<key>NSMessage</key>
 			<string>scanFolder</string>
 			<key>NSPortName</key>
-			<string>GrandPerspective</string>
+			<string>GrandSniffer</string>
 			<key>NSRequiredContext</key>
 			<dict>
 				<key>NSServiceCategory</key>
@@ -410,7 +410,7 @@
 			<key>NSMessage</key>
 			<string>loadScanData</string>
 			<key>NSPortName</key>
-			<string>GrandPerspective</string>
+			<string>GrandSniffer</string>
 			<key>NSRequiredContext</key>
 			<dict>
 				<key>NSServiceCategory</key>
@@ -430,7 +430,7 @@
 				<string>org.gnu.gnu-zip-archive</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>GrandPerspective scan results</string>
+			<string>GrandSniffer scan results</string>
 			<key>UTTypeIconFile</key>
 			<string>GrandPerspectiveScan.icns</string>
 			<key>UTTypeIdentifier</key>

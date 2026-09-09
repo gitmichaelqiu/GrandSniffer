@@ -245,10 +245,10 @@
 "GB" = "GB";
 
 /* FDA warning sheet */
-"GrandPerspective needs full access to your disk for optimal scan performance. Please select your main volume (e.g. Macintosh HD) in the following prompt." = "GrandPerspective necesita acceso total al disco para un escaneo óptimo. Por favor, seleccione su disco principal (v.g. Macintosh HD) en el siguiente campo.";
+"GrandSniffer needs full access to your disk for optimal scan performance. Please select your main volume (e.g. Macintosh HD) in the following prompt." = "GrandSniffer necesita acceso total al disco para un escaneo óptimo. Por favor, seleccione su disco principal (v.g. Macintosh HD) en el siguiente campo.";
 
 /* FDA warning alert */
-"GrandPerspective seems to lack Full Disk Access permissions" = "GrandPerspective parece no tener permiso total de acceso al disco.";
+"GrandSniffer seems to lack Full Disk Access permissions" = "GrandSniffer parece no tener permiso total de acceso al disco.";
 
 /* Menu item */
 "Hide Control Panel" = "Ocultar el Panel de Control";
@@ -474,4 +474,3 @@
 
 /* Parse error */
 "Unrecognized value" = "Valor no reconocido";
-
