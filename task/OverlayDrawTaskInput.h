@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype) initWithVisibleTree:(FileItem *)visibleTree
                           treeInView:(FileItem *)treeInView
                        layoutBuilder:(TreeLayoutBuilder *)layoutBuilder
-                              bounds:(NSRect) bounds NS_UNAVAILABLE;
+                              bounds:(NSRect) bounds
+                 backingScaleFactor:(CGFloat)backingScaleFactor NS_UNAVAILABLE;
 
 - (instancetype) initWithVisibleTree:(FileItem *)visibleTree
                           treeInView:(FileItem *)treeInView
