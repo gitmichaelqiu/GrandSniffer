@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
   DirectoryItem  *groupFilesDir;
   Item  *nextFilesToGroup;
   BOOL  insideVisibleTree;
+  NSMutableArray  *directoryDecorations;
 
   BOOL  abort;
 }
@@ -79,6 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) drawFreeSpaceAtRect:(NSRect) rect;
 - (void) drawFreedSpaceAtRect:(NSRect) rect;
 - (void) drawFileItem:(FileItem *)fileItem atRect:(NSRect) rect depth:(int) depth;
+- (void) drawDirectoryItem:(DirectoryItem *)directoryItem atRect:(NSRect) rect depth:(int) depth;
 
 @end
 

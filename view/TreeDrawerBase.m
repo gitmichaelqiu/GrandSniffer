@@ -21,6 +21,7 @@
     rectangleDrawer = [[GradientRectangleDrawer alloc] initWithColorPalette: colorPalette];
 
     treeGuide = [[FilteredTreeGuide alloc] init];
+    directoryDecorations = [[NSMutableArray alloc] initWithCapacity: 32];
     _treeDrawerSettings = nil;
 
     abort = NO;
@@ -30,6 +31,7 @@
 
 - (void) dealloc {
   [treeGuide release];
+  [directoryDecorations release];
   [scanTree release];
   [rectangleDrawer release];
   [_treeDrawerSettings release];
@@ -70,12 +72,19 @@
 
   insideVisibleTree = NO;
   visibleTree = visibleTreeVal;
+  [directoryDecorations removeAllObjects];
 
   [layoutBuilder layoutItemTree: treeRoot inRect: bounds traverser: self];
 
   visibleTree = nil;
 
   if (!abort) {
+    for (NSDictionary *decoration in [directoryDecorations reverseObjectEnumerator]) {
+      [self drawDirectoryItem: decoration[@"item"]
+                       atRect: [decoration[@"rect"] rectValue]
+                         depth: [decoration[@"depth"] intValue]];
+    }
+
     return [rectangleDrawer createImageFromBitmap];
   }
   else {
@@ -163,6 +172,12 @@
       return NO;
     }
 
+    [directoryDecorations addObject: @{
+      @"item": file,
+      @"rect": [NSValue valueWithRect: rect],
+      @"depth": @(depth)
+    }];
+
     [treeGuide descendIntoDirectory: (DirectoryItem *)file];
 
     if (self.groupFiles) {
@@ -218,5 +233,6 @@
 - (void) drawFreeSpaceAtRect:(NSRect) rect {}
 - (void) drawFreedSpaceAtRect:(NSRect) rect {}
 - (void) drawFileItem:(FileItem *)fileItem atRect:(NSRect) rect depth:(int) depth {}
+- (void) drawDirectoryItem:(DirectoryItem *)directoryItem atRect:(NSRect) rect depth:(int) depth {}
 
 @end

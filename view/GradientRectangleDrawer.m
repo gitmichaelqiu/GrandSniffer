@@ -192,6 +192,93 @@
   }
 }
 
+- (void) drawFlatFilledRect:(NSRect)rect colorIndex:(NSUInteger)colorIndex {
+  if (rect.size.width <= 0 || rect.size.height <= 0) {
+    return;
+  }
+
+  UInt32 intColor = gradientColors[colorIndex * 256 + 128];
+  [self drawBasicFilledRect: rect intColor: intColor];
+}
+
+- (void) drawBorderedRect:(NSRect)rect intColor:(UInt32)intColor {
+  if (rect.size.width <= 1 || rect.size.height <= 1) {
+    return;
+  }
+
+  CGFloat lineWidth = 1.0;
+  [self drawBasicFilledRect: NSMakeRect(NSMinX(rect), NSMinY(rect), NSWidth(rect), lineWidth)
+                    intColor: intColor];
+  [self drawBasicFilledRect: NSMakeRect(NSMinX(rect), NSMaxY(rect) - lineWidth,
+                                        NSWidth(rect), lineWidth)
+                    intColor: intColor];
+  [self drawBasicFilledRect: NSMakeRect(NSMinX(rect), NSMinY(rect), lineWidth, NSHeight(rect))
+                    intColor: intColor];
+  [self drawBasicFilledRect: NSMakeRect(NSMaxX(rect) - lineWidth, NSMinY(rect),
+                                        lineWidth, NSHeight(rect))
+                    intColor: intColor];
+}
+
+- (void) drawLabel:(NSString *)label
+          sizeText:(NSString *)sizeText
+            inRect:(NSRect)rect
+       asContainer:(BOOL)asContainer {
+  if (label.length == 0 || rect.size.width < (asContainer ? 64 : 38) ||
+      rect.size.height < (asContainer ? 24 : 20)) {
+    return;
+  }
+
+  CGFloat inset = asContainer ? 4.0 : 3.0;
+  NSRect textRect = NSInsetRect(rect, inset, inset);
+  if (asContainer) {
+    NSRect headerRect = NSMakeRect(NSMinX(rect), NSMaxY(rect) - 20.0,
+                                   NSWidth(rect), 20.0);
+    [self drawBasicFilledRect: headerRect
+                      intColor: [self intValueForColor:
+                                 [NSColor colorWithDeviceRed: 0.88
+                                                       green: 0.81
+                                                        blue: 0.70
+                                                       alpha: 1.0]]];
+    textRect = NSMakeRect(NSMinX(rect) + inset, NSMaxY(rect) - 18.0,
+                          MAX(0, NSWidth(rect) - inset * 2), 14.0);
+  }
+  BOOL showInlineSize = asContainer && sizeText.length > 0 && rect.size.width >= 110;
+  BOOL showSize = !asContainer && sizeText.length > 0 && rect.size.width >= 70 && rect.size.height >= 32;
+  NSString *text = (showInlineSize
+                    ? [NSString stringWithFormat: @"%@ • %@", label, sizeText]
+                    : (showSize ? [NSString stringWithFormat: @"%@\n%@", label, sizeText] : label));
+
+  NSFont *font = [NSFont systemFontOfSize: (asContainer ? 11.0 : 10.0)
+                                   weight: (asContainer ? NSFontWeightSemibold : NSFontWeightRegular)];
+  NSMutableParagraphStyle *paragraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
+  paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+  paragraphStyle.alignment = (!asContainer && rect.size.width >= 120 && rect.size.height >= 48
+                              ? NSTextAlignmentCenter
+                              : NSTextAlignmentLeft);
+
+  NSDictionary *attributes = @{
+    NSFontAttributeName: font,
+    NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite: 0.05 alpha: 0.92],
+    NSParagraphStyleAttributeName: paragraphStyle
+  };
+  NSAttributedString *attributedText = [[[NSAttributedString alloc] initWithString: text
+                                                                            attributes: attributes]
+                                         autorelease];
+
+  if (!asContainer && paragraphStyle.alignment == NSTextAlignmentCenter) {
+    NSSize textSize = [attributedText boundingRectWithSize: textRect.size
+                                                   options: NSStringDrawingUsesLineFragmentOrigin].size;
+    textRect.origin.y = NSMidY(rect) - MIN(NSHeight(textRect), textSize.height) / 2.0;
+  }
+
+  NSGraphicsContext *graphicsContext = [NSGraphicsContext graphicsContextWithBitmapImageRep: drawBitmap];
+  [NSGraphicsContext saveGraphicsState];
+  [NSGraphicsContext setCurrentContext: graphicsContext];
+  NSRectClip(textRect);
+  [attributedText drawInRect: textRect];
+  [NSGraphicsContext restoreGraphicsState];
+}
+
 @end // @implementation GradientRectangleDrawer
 
 
@@ -266,4 +353,3 @@
 }
 
 @end // @implementation GradientRectangleDrawer (PrivateMethods)
-

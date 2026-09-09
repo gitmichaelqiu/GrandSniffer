@@ -124,7 +124,34 @@
   NSUInteger  colorIndex = [_colorMapper colorIndexForHash: hash
                                                  numColors: rectangleDrawer.numGradientColors];
 
-  [rectangleDrawer drawGradientFilledRect: rect colorIndex: colorIndex];
+  [rectangleDrawer drawFlatFilledRect: rect colorIndex: colorIndex];
+  [rectangleDrawer drawBorderedRect: rect
+                           intColor: [rectangleDrawer intValueForColor:
+                                      [NSColor colorWithDeviceWhite: 0.12 alpha: 1.0]]];
+  [rectangleDrawer drawLabel: fileItem.label
+                    sizeText: [FileItem stringForFileItemSize: fileItem.itemSize]
+                      inRect: rect
+                 asContainer: NO];
+}
+
+- (void) drawDirectoryItem:(DirectoryItem *)directoryItem atRect:(NSRect) rect depth:(int) depth {
+  NSString *label = directoryItem.label.lastPathComponent;
+  if (label.length == 0) {
+    label = directoryItem.pathComponent.lastPathComponent;
+  }
+  if (label.length == 0) {
+    label = directoryItem.pathComponent;
+  }
+
+  if (depth > 0) {
+    [rectangleDrawer drawLabel: label
+                      sizeText: [FileItem stringForFileItemSize: directoryItem.itemSize]
+                        inRect: rect
+                   asContainer: YES];
+  }
+  [rectangleDrawer drawBorderedRect: rect
+                           intColor: [rectangleDrawer intValueForColor:
+                                      [NSColor colorWithDeviceWhite: 0.08 alpha: 1.0]]];
 }
 
 @end // @implementation TreeDrawer
