@@ -60,6 +60,7 @@
   [settingsLock unlock];
 
   DrawTaskInput  *drawingInput = input;
+  _treeDrawer.backingScaleFactor = drawingInput.backingScaleFactor;
     
   [treeContext obtainReadLock];
     

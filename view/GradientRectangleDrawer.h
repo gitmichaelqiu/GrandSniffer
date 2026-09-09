@@ -11,6 +11,7 @@
 
   NSRect  bitmapBounds;
   NSBitmapImageRep  *drawBitmap;
+  CGFloat backingScaleFactor;
 
 }
 
@@ -24,6 +25,8 @@
  * should be between 0 (uniform color) and 1 (maximum color difference).
  */
 @property (nonatomic) float colorGradient;
+
+@property (nonatomic) CGFloat backingScaleFactor;
 
 @property (nonatomic, readonly) NSUInteger numGradientColors;
 

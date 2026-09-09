@@ -817,7 +817,8 @@ CGFloat ramp(CGFloat x, CGFloat minX, CGFloat maxX) {
     [[DrawTaskInput alloc] initWithVisibleTree: pathModelView.visibleTree
                                     treeInView: self.treeInView
                                  layoutBuilder: layoutBuilder
-                                        bounds: self.bounds];
+                                        bounds: self.bounds
+                           backingScaleFactor: self.window.backingScaleFactor];
   [drawTaskManager asynchronouslyRunTaskWithInput: drawInput
                                          callback: self
                                          selector: @selector(itemTreeImageReady:)];
@@ -876,6 +877,7 @@ CGFloat ramp(CGFloat x, CGFloat minX, CGFloat maxX) {
                                              treeInView: self.treeInView
                                           layoutBuilder: layoutBuilder
                                                  bounds: self.bounds
+                                    backingScaleFactor: self.window.backingScaleFactor
                                             overlayTest: _overlayTest];
   [overlayDrawTaskManager asynchronouslyRunTaskWithInput: overlayDrawInput
                                                 callback: self

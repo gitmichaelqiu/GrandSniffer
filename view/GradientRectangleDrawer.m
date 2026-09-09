@@ -15,6 +15,7 @@
   if (self = [super init]) {
     [self setColorPalette: colorPaletteVal];
     [self setColorGradient: 0.5f];
+    backingScaleFactor = 1.0;
   }
   
   return self;
@@ -74,20 +75,31 @@
   return colorGradient;
 }
 
+- (void) setBackingScaleFactor:(CGFloat)scaleFactor {
+  backingScaleFactor = MAX(1.0, scaleFactor);
+}
+
+- (CGFloat) backingScaleFactor {
+  return backingScaleFactor;
+}
+
 - (void) setupBitmap:(NSRect)bounds {
   NSAssert(drawBitmap == nil, @"Bitmap should be nil.");
 
   bitmapBounds = bounds;
+  NSUInteger pixelsWide = MAX(1, (NSUInteger)ceil(NSWidth(bounds) * backingScaleFactor));
+  NSUInteger pixelsHigh = MAX(1, (NSUInteger)ceil(NSHeight(bounds) * backingScaleFactor));
   drawBitmap = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes: NULL
-                                                       pixelsWide: (int) bitmapBounds.size.width
-                                                       pixelsHigh: (int) bitmapBounds.size.height
+                                                       pixelsWide: (int) pixelsWide
+                                                       pixelsHigh: (int) pixelsHigh
                                                     bitsPerSample: 8
                                                   samplesPerPixel: 3
                                                          hasAlpha: NO
                                                          isPlanar: NO
-                                                   colorSpaceName: NSDeviceRGBColorSpace
-                                                      bytesPerRow: 0
-                                                     bitsPerPixel: 32];
+                                                       colorSpaceName: NSDeviceRGBColorSpace
+                                                       bytesPerRow: 0
+                                                       bitsPerPixel: 32];
+  drawBitmap.size = bitmapBounds.size;
 
   if (initGradientColors) {
     [self initGradientColors];
@@ -120,11 +132,12 @@
 
 - (void) drawBasicFilledRect:(NSRect)rect intColor:(UInt32)intColor {
   UInt32  *data = (UInt32 *)drawBitmap.bitmapData;
+  CGFloat scale = backingScaleFactor;
   
-  int  x0 = (int)(rect.origin.x + 0.5f);
-  int  y0 = (int)(rect.origin.y + 0.5f); 
-  int  height = (int)(rect.origin.y + rect.size.height + 0.5f) - y0;
-  int  width = (int)(rect.origin.x + rect.size.width + 0.5f) - x0;
+  int  x0 = (int)(rect.origin.x * scale + 0.5f);
+  int  y0 = (int)(rect.origin.y * scale + 0.5f);
+  int  height = (int)((rect.origin.y + rect.size.height) * scale + 0.5f) - y0;
+  int  width = (int)((rect.origin.x + rect.size.width) * scale + 0.5f) - x0;
   int  bitmapWidth = (int)drawBitmap.bytesPerRow / sizeof(UInt32);
   int  bitmapHeight = (int)drawBitmap.pixelsHigh;
   
@@ -147,10 +160,11 @@
   UInt32  *pos;
   UInt32  *poslim;
 
-  int  x0 = (int)(rect.origin.x + 0.5f);
-  int  y0 = (int)(rect.origin.y + 0.5f);
-  int  width = (int)(rect.origin.x + rect.size.width + 0.5f) - x0;
-  int  height = (int)(rect.origin.y + rect.size.height + 0.5f) - y0;
+  CGFloat scale = backingScaleFactor;
+  int  x0 = (int)(rect.origin.x * scale + 0.5f);
+  int  y0 = (int)(rect.origin.y * scale + 0.5f);
+  int  width = (int)((rect.origin.x + rect.size.width) * scale + 0.5f) - x0;
+  int  height = (int)((rect.origin.y + rect.size.height) * scale + 0.5f) - y0;
   int  bitmapWidth = (int)drawBitmap.bytesPerRow / sizeof(UInt32);
   int  bitmapHeight = (int)drawBitmap.pixelsHigh;
  
@@ -163,7 +177,8 @@
  
   // Horizontal lines
   for (int y = 0; y < height; y++) {
-    gradient = 256 * (y0 + y + 0.5f - rect.origin.y) / rect.size.height;
+    CGFloat logicalY = (y0 + y + 0.5f) / scale;
+    gradient = 256 * (logicalY - rect.origin.y) / rect.size.height;
     // Check for out of bounds, rarely happens but can due to rounding errors.
     intColor = intColors[ MIN(255, MAX(0, gradient)) ];
     
@@ -178,7 +193,8 @@
   
   // Vertical lines
   for (int x = 0; x < width; x++) {
-    gradient = 256 * (1 - (x0 + x + 0.5f - rect.origin.x) / rect.size.width);
+    CGFloat logicalX = (x0 + x + 0.5f) / scale;
+    gradient = 256 * (1 - (logicalX - rect.origin.x) / rect.size.width);
     // Check for out of bounds, rarely happens but can due to rounding errors.
     intColor = intColors[ MIN(255, MAX(0, gradient)) ];
     

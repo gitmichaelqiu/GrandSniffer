@@ -23,6 +23,7 @@
     treeGuide = [[FilteredTreeGuide alloc] init];
     directoryDecorations = [[NSMutableArray alloc] initWithCapacity: 32];
     _treeDrawerSettings = nil;
+    _backingScaleFactor = 1.0;
 
     abort = NO;
   }
@@ -68,6 +69,7 @@
                      startingAtTree:(FileItem *)treeRoot
                  usingLayoutBuilder:(TreeLayoutBuilder *)layoutBuilder
                              inRect:(NSRect)bounds {
+  rectangleDrawer.backingScaleFactor = self.backingScaleFactor;
   [rectangleDrawer setupBitmap: bounds];
 
   insideVisibleTree = NO;

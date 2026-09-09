@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly, strong) TreeDrawerBaseSettings *treeDrawerSettings;
 
+@property (nonatomic) CGFloat backingScaleFactor;
+
 @property (nonatomic) unsigned displayDepth;
 @property (nonatomic) BOOL showPackageContents;
 

@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
                           treeInView:(FileItem *)treeInView
                        layoutBuilder:(TreeLayoutBuilder *)layoutBuilder
                               bounds:(NSRect) bounds
+                 backingScaleFactor:(CGFloat)backingScaleFactor
                          overlayTest:(FileItemTest *)overlayTest NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, readonly, strong) FileItemTest *overlayTest;

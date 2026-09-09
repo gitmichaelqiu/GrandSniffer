@@ -12,11 +12,13 @@
 - (instancetype) initWithVisibleTree:(FileItem *)visibleTree
                           treeInView:(FileItem *)treeInView
                        layoutBuilder:(TreeLayoutBuilder *)layoutBuilder
-                              bounds:(NSRect) bounds NS_DESIGNATED_INITIALIZER;
+                              bounds:(NSRect) bounds
+                 backingScaleFactor:(CGFloat)backingScaleFactor NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, readonly, strong) FileItem *visibleTree;
 @property (nonatomic, readonly, strong) FileItem *treeInView;
 @property (nonatomic, readonly, strong) TreeLayoutBuilder *layoutBuilder;
 @property (nonatomic, readonly) NSRect bounds;
+@property (nonatomic, readonly) CGFloat backingScaleFactor;
 
 @end

@@ -8,12 +8,14 @@
                           treeInView:(FileItem *)treeInView
                        layoutBuilder:(TreeLayoutBuilder *)layoutBuilder
                               bounds:(NSRect) bounds
+                 backingScaleFactor:(CGFloat)backingScaleFactor
                          overlayTest:(FileItemTest *)overlayTest {
 
   if (self = [super initWithVisibleTree: visibleTree
                              treeInView: treeInView
                           layoutBuilder: layoutBuilder
-                                 bounds: bounds]) {
+                                 bounds: bounds
+                    backingScaleFactor: backingScaleFactor]) {
     _overlayTest = [overlayTest retain];
   }
 

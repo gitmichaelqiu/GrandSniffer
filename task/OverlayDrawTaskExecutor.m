@@ -53,6 +53,7 @@
   [settingsLock unlock];
 
   OverlayDrawTaskInput  *overlayInput = input;
+  overlayDrawer.backingScaleFactor = overlayInput.backingScaleFactor;
 
   return [overlayDrawer drawOverlayImageOfVisibleTree: overlayInput.visibleTree
                                        startingAtTree: overlayInput.treeInView
