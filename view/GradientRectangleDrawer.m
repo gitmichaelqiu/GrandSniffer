@@ -264,19 +264,29 @@
     textRect = NSMakeRect(NSMinX(rect) + inset, NSMaxY(rect) - 18.0,
                           MAX(0, NSWidth(rect) - inset * 2), 14.0);
   }
-  BOOL showInlineSize = asContainer && sizeText.length > 0 && rect.size.width >= 110;
+  BOOL showInlineSize = sizeText.length > 0 &&
+                        (asContainer ? rect.size.width >= 110 : rect.size.width >= 180);
   BOOL showSize = !asContainer && sizeText.length > 0 && rect.size.width >= 70 && rect.size.height >= 32;
   NSString *text = (showInlineSize
                     ? [NSString stringWithFormat: @"%@ • %@", label, sizeText]
                     : (showSize ? [NSString stringWithFormat: @"%@\n%@", label, sizeText] : label));
 
+  if (!asContainer) {
+    CGFloat labelHeight = showInlineSize ? 14.0 : (showSize ? 28.0 : 14.0);
+    // Directory headers are drawn after their children. Leave room below the header so a
+    // large child that reaches the directory's top edge keeps its label visible.
+    CGFloat headerClearance = rect.size.height >= 48.0 ? 20.0 : 0.0;
+    textRect = NSMakeRect(NSMinX(rect) + inset,
+                          NSMaxY(rect) - inset - labelHeight - headerClearance,
+                          MAX(0, NSWidth(rect) - inset * 2),
+                          labelHeight);
+  }
+
   NSFont *font = [NSFont systemFontOfSize: (asContainer ? 11.0 : 10.0)
                                    weight: (asContainer ? NSFontWeightSemibold : NSFontWeightRegular)];
   NSMutableParagraphStyle *paragraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
   paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-  paragraphStyle.alignment = (!asContainer && rect.size.width >= 120 && rect.size.height >= 48
-                              ? NSTextAlignmentCenter
-                              : NSTextAlignmentLeft);
+  paragraphStyle.alignment = NSTextAlignmentLeft;
 
   NSDictionary *attributes = @{
     NSFontAttributeName: font,
@@ -287,17 +297,14 @@
                                                                             attributes: attributes]
                                          autorelease];
 
-  if (!asContainer && paragraphStyle.alignment == NSTextAlignmentCenter) {
-    NSSize textSize = [attributedText boundingRectWithSize: textRect.size
-                                                   options: NSStringDrawingUsesLineFragmentOrigin].size;
-    textRect.origin.y = NSMidY(rect) - MIN(NSHeight(textRect), textSize.height) / 2.0;
-  }
-
   NSGraphicsContext *graphicsContext = [NSGraphicsContext graphicsContextWithBitmapImageRep: drawBitmap];
   [NSGraphicsContext saveGraphicsState];
   [NSGraphicsContext setCurrentContext: graphicsContext];
   NSRectClip(textRect);
-  [attributedText drawInRect: textRect];
+  [attributedText drawWithRect: textRect
+                        options: NSStringDrawingUsesLineFragmentOrigin |
+                                 NSStringDrawingTruncatesLastVisibleLine
+                         context: nil];
   [NSGraphicsContext restoreGraphicsState];
 }
 
