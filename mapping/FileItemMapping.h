@@ -1,0 +1,40 @@
+#import <Cocoa/Cocoa.h>
+
+@class FileItem;
+@class PlainFileItem;
+
+/* An implementation of a particular file item mapping scheme. It can map file items to hash values.
+ *
+ * Implementations are not (necessarily) thread-safe. Each thread should get an instance it can
+ * safely use by invoking -fileItemMapping on the file item mapping scheme.
+ */
+@interface FileItemMapping : NSObject {
+}
+
+/* Calculates a hash value for a file item in a tree, when the item is encountered while traversing
+ * the tree. The calculation may use the "depth" of the file item relative to the root of the tree,
+ * as provided by the TreeLayoutBuilder to the TreeLayoutTraverser.
+ *
+ * For calculating the hash value when not traversing a tree, use -hashForFileItem:inTree:.
+ */
+- (NSUInteger) hashForFileItem:(FileItem *)item atDepth:(NSUInteger)depth;
+
+/* Calculates a hash value for a given file item in a tree. It performs the same calculation as
+ * -hashForFileItem:depth:. Unlike the latter method, this one can be used when a tree is not being
+ * traversed (and the "depth" of the item is not easily available). The depth will be calculated
+ * relative to the provided tree root.
+ */
+- (NSUInteger) hashForFileItem:(FileItem *)item inTree:(FileItem *)treeRoot;
+
+/* Returns the color index for the given hash, given the number of available colors.
+ */
+- (NSUInteger) colorIndexForHash:(NSUInteger)hash numColors:(NSUInteger)numColors;
+
+- (BOOL)providesLegend;
+
+/* Description for the given color index, if any. Returns nil if no suitable description can be
+ * provided.
+ */
+- (NSString *)legendForColorIndex:(NSUInteger)colorIndex numColors:(NSUInteger)numColors;
+
+@end
