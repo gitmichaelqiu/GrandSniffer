@@ -29,8 +29,8 @@
 }
 
 - (void) drawFileItem:(FileItem *)fileItem atRect:(NSRect) rect depth:(int) depth {
-  // Plain file that passed the test. Highlight it
-  [rectangleDrawer drawBasicFilledRect: rect intColor: overlayColor];
+  // Plain file that passed the test. Keep its label and color visible while highlighting it.
+  [rectangleDrawer drawBorderedRect: rect intColor: overlayColor];
 }
 
 @end
