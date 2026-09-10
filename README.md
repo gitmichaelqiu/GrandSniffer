@@ -9,10 +9,13 @@ by GrandPerspective or SpaceSniffer.
 # License
 
 This repository contains modified GrandPerspective source code, released under
-the GNU General Public License version 2 or later. The upstream license text,
-copyright notices, and contributor credits are preserved in this repository.
-GrandSniffer's interface modifications are Copyright (C) 2026 Michael Y. Qiu
-and are distributed under the same license. See LICENSE for details.
+the GNU General Public License version 2 or later. GrandPerspective's upstream
+credits identify Erwin Bonsma as its developer, and the upstream application
+identifies Eriban Software in its copyright notice. The original GPL notices,
+copyright notices, and contributor credits are preserved in this repository
+and in the application credits. GrandSniffer's changes are Copyright (C) 2026
+Michael Y. Qiu and are distributed under the same license. See LICENSE for
+details.
 
 # How to contribute
 
