@@ -1,4 +1,12 @@
-# About GrandSniffer
+<h1 align="center">
+  <img src="./GrandSnifferLogo.png" width="25%" alt=""/>  
+  <p></p>
+  <p align="center">GrandSniffer</p>
+</h1>
+<h3>
+<p align="center"><i>GrandPerspective but Space Sniffer.</i></p>
+</h3>
+
 GrandSniffer is a macOS disk-usage visualizer derived from
 [GrandPerspective][]. It keeps GrandPerspective's scanning and file-management
 features while developing a more SpaceSniffer-like scanned-view interface.
