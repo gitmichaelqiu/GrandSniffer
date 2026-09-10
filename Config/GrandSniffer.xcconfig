@@ -1,0 +1,3 @@
+// Shared build configuration. Personal signing settings belong in the
+// ignored Config/LocalSigning.xcconfig file.
+#include? "LocalSigning.xcconfig"
