@@ -1,8 +1,11 @@
 {
+  "features" : [
+    "refractivity"
+  ],
   "fill-specializations" : [
     {
       "value" : {
-        "solid" : "srgb:0.63655,0.82035,0.90299,1.00000"
+        "automatic-gradient" : "extended-srgb:0.00000,0.53333,1.00000,1.00000"
       }
     },
     {
@@ -14,17 +17,32 @@
     {
       "layers" : [
         {
-          "image-name" : "GrandPerspectiveLogo-v33.png",
-          "name" : "GrandPerspectiveLogo-v3-3"
+          "fill" : {
+            "automatic-gradient" : "extended-gray:1.00000,1.00000"
+          },
+          "hidden" : false,
+          "image-name" : "exec-18843d51-5c53-480a-a941-59c4a74bacdc 2.png",
+          "name" : "exec-18843d51-5c53-480a-a941-59c4a74bacdc 2",
+          "position" : {
+            "scale" : 0.57,
+            "translation-in-points" : [
+              -60,
+              -21
+            ]
+          }
         }
       ],
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : true,
+        "strength" : 0.5
+      },
       "shadow" : {
         "kind" : "neutral",
-        "opacity" : 0.5
+        "opacity" : 0.8
       },
-      "specular" : true,
       "translucency" : {
-        "enabled" : false,
+        "enabled" : true,
         "value" : 0.5
       }
     },
@@ -32,32 +50,53 @@
       "layers" : [
         {
           "image-name" : "GrandPerspectiveLogo-v32.png",
-          "name" : "GrandPerspectiveLogo-v32-2"
-        }
-      ],
-      "shadow" : {
-        "kind" : "neutral",
-        "opacity" : 0.5
-      },
-      "translucency" : {
-        "enabled" : false,
-        "value" : 0.5
-      }
-    },
-    {
-      "hidden" : false,
-      "layers" : [
+          "name" : "GrandPerspectiveLogo-v32-2",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        },
         {
           "image-name" : "GrandPerspectiveLogo-v31.png",
-          "name" : "GrandPerspectiveLogo-v3-1"
+          "name" : "GrandPerspectiveLogo-v3-1",
+          "position" : {
+            "scale" : 1.11,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:0.20392,0.20392,0.68627,1.00000"
+          },
+          "hidden" : false,
+          "image-name" : "GrandPerspectiveLogo-v33.png",
+          "name" : "GrandPerspectiveLogo-v3-3",
+          "position" : {
+            "scale" : 0.78,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
         }
       ],
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : true,
+        "strength" : 0.5
+      },
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
       },
       "translucency" : {
-        "enabled" : false,
+        "enabled" : true,
         "value" : 0.5
       }
     }
