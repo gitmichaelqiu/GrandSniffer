@@ -24,7 +24,7 @@
 #import "SelectiveItemTest.h"
 
 #import "LogManager.h"
-#import "GrandPerspective-Swift.h"
+#import "GrandSniffer-Swift.h"
 
 
 NSString  *DeleteNothing = @"delete nothing";
