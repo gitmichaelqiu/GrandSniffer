@@ -1,3 +1,5 @@
+// GrandSniffer modification: changed from GrandPerspective on 2026-09-10. Copyright (C) 2026 Michael Y. Qiu. See LICENSE and Credits.rtf.
+
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
@@ -170,6 +172,7 @@
 		AAEF442510821EC800468832 /* FileItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF442410821EC800468832 /* FileItemTest.m */; };
 		AAF951B10EDEE2E100844FD5 /* DirectoryViewToolbarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF951B00EDEE2E100844FD5 /* DirectoryViewToolbarControl.m */; };
 		D1A0B0012FA0000000010001 /* GrandSnifferCommandBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A0B0022FA0000000010001 /* GrandSnifferCommandBar.swift */; };
+		D1A0B0032FA0000000010001 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D1A0B0042FA0000000010001 /* LICENSE */; };
 		AAFB1194238ABF3B00D616C3 /* TreeWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB1193238ABF3B00D616C3 /* TreeWriter.m */; };
 		AAFB1197238AD5E900D616C3 /* RawTreeWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB1196238AD5E900D616C3 /* RawTreeWriter.m */; };
 		D009CBD92FA5E45B00AC19E9 /* GrandPerspectiveLogo.icon in Resources */ = {isa = PBXBuildFile; fileRef = D009CBD82FA5E45B00AC19E9 /* GrandPerspectiveLogo.icon */; };
@@ -685,6 +688,7 @@
 		AAF951AF0EDEE2E100844FD5 /* DirectoryViewToolbarControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectoryViewToolbarControl.h; path = control/DirectoryViewToolbarControl.h; sourceTree = "<group>"; };
 		AAF951B00EDEE2E100844FD5 /* DirectoryViewToolbarControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DirectoryViewToolbarControl.m; path = control/DirectoryViewToolbarControl.m; sourceTree = "<group>"; };
 		D1A0B0022FA0000000010001 /* GrandSnifferCommandBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GrandSnifferCommandBar.swift; path = control/GrandSnifferCommandBar.swift; sourceTree = "<group>"; };
+		D1A0B0042FA0000000010001 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		AAF9F7D30B30118C00FA4C51 /* ControlConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlConstants.h; path = control/ControlConstants.h; sourceTree = "<group>"; };
 		AAFB1192238ABF3B00D616C3 /* TreeWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeWriter.h; sourceTree = "<group>"; };
 		AAFB1193238ABF3B00D616C3 /* TreeWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeWriter.m; sourceTree = "<group>"; };
@@ -760,6 +764,7 @@
 				AAE4982D1CD158C6003F0A29 /* Images.xcassets */,
 				AAF952C50EE043A400844FD5 /* Images */,
 				AAD6855008D9FE600096C6C1 /* Credits.rtf */,
+				D1A0B0042FA0000000010001 /* LICENSE */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				AA8FEB290B6CC2D80049FF42 /* Names.strings */,
@@ -1236,6 +1241,7 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				AA63515A0972E1F70024C9D0 /* Credits.rtf in Resources */,
+				D1A0B0032FA0000000010001 /* LICENSE in Resources */,
 				AA59E3AB23C32ED6006A5184 /* ControlPanel.xib in Resources */,
 				AA7C64D60AFE71DC007B8CD2 /* Localizable.strings in Resources */,
 				AA8FEB2B0B6CC2D90049FF42 /* Names.strings in Resources */,

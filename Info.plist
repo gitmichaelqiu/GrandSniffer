@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- GrandSniffer modification: changed from GrandPerspective on 2026-09-10. Copyright (C) 2026 Michael Y. Qiu. See LICENSE and Credits.rtf. -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © Eriban Software, 2005-2026</string>
+	<string>Copyright © Eriban Software, 2005-2026; GrandSniffer modifications Copyright © 2026 Michael Y. Qiu</string>
 	<key>CFBundleDisplayName</key>
 	<string>GrandSniffer</string>
 	<key>CFBundleName</key>

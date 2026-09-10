@@ -1,3 +1,5 @@
+// GrandSniffer modification: changed from GrandPerspective on 2026-09-10. Copyright (C) 2026 Michael Y. Qiu. See LICENSE and Credits.rtf.
+
 #import "TreeDrawer.h"
 
 #import "DirectoryItem.h"

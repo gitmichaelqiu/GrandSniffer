@@ -17,6 +17,11 @@ and in the application credits. GrandSniffer's changes are Copyright (C) 2026
 Michael Y. Qiu and are distributed under the same license. See LICENSE for
 details.
 
+The complete corresponding source code and build project for GrandSniffer are
+included in this repository. Binary distributions must be accompanied by the
+corresponding source or by a GPLv2-compliant written offer, as required by the
+license.
+
 # How to contribute
 
 You can contribute in various ways:
