@@ -30,6 +30,23 @@ included in this repository. Binary distributions must be accompanied by the
 corresponding source or by a GPLv2-compliant written offer, as required by the
 license.
 
+# Local development
+
+GrandSniffer uses a shared build configuration so personal signing settings do
+not need to be committed. To run a signed build from a fresh clone:
+
+1. Copy `Config/LocalSigning.xcconfig.example` to `Config/LocalSigning.xcconfig`.
+2. Replace `YOUR_TEAM_ID` with the Apple Developer Team ID used by Xcode.
+3. Select the `GrandPerspective` scheme in Xcode and build or run the app.
+
+`Config/LocalSigning.xcconfig` is ignored by Git. The project can also be built
+without signing from the command line with:
+
+```sh
+xcodebuild -project GrandPerspective.xcodeproj -scheme GrandPerspective \
+  -configuration Development -sdk macosx build CODE_SIGNING_ALLOWED=NO
+```
+
 # How to contribute
 
 You can contribute in various ways:
