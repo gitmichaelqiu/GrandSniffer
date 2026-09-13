@@ -27,6 +27,7 @@ extern NSString  *ViewWillCloseEvent;
   IBOutlet DirectoryView  *mainView;
   IBOutlet NSView  *commandBarContainer;
   NSView  *commandBarView;
+  NSObject  *commandBarNotificationTarget;
   
   ItemPathModelView  *pathModelView;
   TreeContext  *treeContext;

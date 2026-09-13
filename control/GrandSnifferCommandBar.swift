@@ -43,6 +43,7 @@ private struct GrandSnifferCommandBarState {
 
 @available(macOS 11.0, *)
 private struct GrandSnifferCommandBarView: View {
+    let commandTarget: NSObject
     @State private var state = GrandSnifferCommandBarState()
     @State private var searchText = ""
 
@@ -145,7 +146,10 @@ private struct GrandSnifferCommandBarView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(nsColor: .windowBackgroundColor))
         .onReceive(
-            NotificationCenter.default.publisher(for: .grandSnifferCommandBarState)
+            NotificationCenter.default.publisher(
+                for: .grandSnifferCommandBarState,
+                object: commandTarget
+            )
         ) { notification in
             state = GrandSnifferCommandBarState(notification: notification)
         }
@@ -192,7 +196,7 @@ private struct GrandSnifferCommandBarView: View {
         values["command"] = command.rawValue
         NotificationCenter.default.post(
             name: .grandSnifferCommand,
-            object: nil,
+            object: commandTarget,
             userInfo: values
         )
     }
@@ -201,8 +205,8 @@ private struct GrandSnifferCommandBarView: View {
 @objc(GrandSnifferCommandBarFactory)
 @available(macOS 11.0, *)
 public final class GrandSnifferCommandBarFactory: NSObject {
-    @objc public static func makeView() -> NSView {
-        let hostingView = NSHostingView(rootView: GrandSnifferCommandBarView())
+    @objc public static func makeView(commandTarget: NSObject) -> NSView {
+        let hostingView = NSHostingView(rootView: GrandSnifferCommandBarView(commandTarget: commandTarget))
         hostingView.translatesAutoresizingMaskIntoConstraints = false
         return hostingView
     }

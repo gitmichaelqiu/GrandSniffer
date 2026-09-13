@@ -174,6 +174,7 @@ static NSString * const GrandSnifferCommandBarStateNotification = @"GrandSniffer
   [_previewPanel release];
 
   [commandBarView release];
+  [commandBarNotificationTarget release];
 
   [customOpenApp release];
   [customRevealApp release];
@@ -228,7 +229,8 @@ static NSString * const GrandSnifferCommandBarStateNotification = @"GrandSniffer
 
   if (@available(macOS 11.0, *)) {
     if (commandBarContainer != nil) {
-      commandBarView = [[GrandSnifferCommandBarFactory makeView] retain];
+      commandBarNotificationTarget = [[NSObject alloc] init];
+      commandBarView = [[GrandSnifferCommandBarFactory makeViewWithCommandTarget: commandBarNotificationTarget] retain];
       [commandBarContainer addSubview: commandBarView];
       [NSLayoutConstraint activateConstraints: @[
         [commandBarView.leadingAnchor constraintEqualToAnchor: commandBarContainer.leadingAnchor],
@@ -272,7 +274,7 @@ static NSString * const GrandSnifferCommandBarStateNotification = @"GrandSniffer
   [nc addObserver: self
          selector: @selector(grandSnifferCommand:)
              name: GrandSnifferCommandNotification
-           object: nil];
+           object: commandBarNotificationTarget];
 
   [userDefaults addObserver: self 
                  forKeyPath: FileDeletionTargetsKey
@@ -989,7 +991,7 @@ static NSString * const GrandSnifferCommandBarStateNotification = @"GrandSniffer
   };
 
   [NSNotificationCenter.defaultCenter postNotificationName: GrandSnifferCommandBarStateNotification
-                                                      object: self
+                                                      object: commandBarNotificationTarget
                                                     userInfo: state];
 }
 
