@@ -73,3 +73,8 @@
 /* Toolbar action */
 "Zoom out" = "Loitonna";
 
+/* Toolbar action */
+"Clear search" = "Tyhjennä haku";
+
+/* Placeholder */
+"Filter files" = "Suodata tiedostoja";

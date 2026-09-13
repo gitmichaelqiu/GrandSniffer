@@ -73,3 +73,8 @@
 /* Toolbar action */
 "Zoom out" = "Uzaklaştır";
 
+/* Toolbar action */
+"Clear search" = "Aramayı temizle";
+
+/* Placeholder */
+"Filter files" = "Dosyaları filtrele";

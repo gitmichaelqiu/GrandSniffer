@@ -73,3 +73,8 @@
 /* Toolbar action */
 "Zoom out" = "Zoom out";
 
+/* Toolbar action */
+"Clear search" = "Clear search";
+
+/* Placeholder */
+"Filter files" = "Filter files";

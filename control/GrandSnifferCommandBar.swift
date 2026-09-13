@@ -19,6 +19,10 @@ private extension Notification.Name {
     static let grandSnifferCommandBarState = Notification.Name("GrandSnifferCommandBarState")
 }
 
+private func toolbarString(_ key: String) -> String {
+    NSLocalizedString(key, tableName: "Toolbar", bundle: .main, value: key, comment: "")
+}
+
 private struct GrandSnifferCommandBarState {
     var canZoomOut = false
     var canZoomIn = false
@@ -51,19 +55,19 @@ private struct GrandSnifferCommandBarView: View {
         HStack(spacing: 8) {
             HStack(spacing: 2) {
                 commandButton(
-                    title: "Zoom out",
+                    title: toolbarString("Zoom out"),
                     systemImage: "minus.magnifyingglass",
                     command: .zoomOut,
                     enabled: state.canZoomOut
                 )
                 commandButton(
-                    title: "Zoom in",
+                    title: toolbarString("Zoom in"),
                     systemImage: "plus.magnifyingglass",
                     command: .zoomIn,
                     enabled: state.canZoomIn
                 )
                 commandButton(
-                    title: "Reset zoom",
+                    title: toolbarString("Reset zoom"),
                     systemImage: "arrow.uturn.backward",
                     command: .resetZoom,
                     enabled: state.canResetZoom
@@ -81,19 +85,19 @@ private struct GrandSnifferCommandBarView: View {
 
             HStack(spacing: 2) {
                 commandButton(
-                    title: "Previous focus",
+                    title: toolbarString("Move focus up"),
                     systemImage: "chevron.up",
                     command: .focusPrevious,
                     enabled: state.canFocusPrevious
                 )
                 commandButton(
-                    title: "Next focus",
+                    title: toolbarString("Move focus down"),
                     systemImage: "chevron.down",
                     command: .focusNext,
                     enabled: state.canFocusNext
                 )
                 commandButton(
-                    title: "Reset focus",
+                    title: toolbarString("Reset focus"),
                     systemImage: "scope",
                     command: .resetFocus,
                     enabled: state.canResetFocus
@@ -118,8 +122,8 @@ private struct GrandSnifferCommandBarView: View {
             }
             .buttonStyle(.bordered)
             .controlSize(.small)
-            .help("Search files")
-            .accessibilityLabel("Search files")
+            .help(toolbarString("Search files by name"))
+            .accessibilityLabel(toolbarString("Search files by name"))
 
             Button {
                 searchText = ""
@@ -129,14 +133,14 @@ private struct GrandSnifferCommandBarView: View {
             }
             .buttonStyle(.borderless)
             .controlSize(.small)
-            .help("Clear search")
-            .accessibilityLabel("Clear search")
+            .help(toolbarString("Clear search"))
+            .accessibilityLabel(toolbarString("Clear search"))
             .disabled(searchText.isEmpty)
 
             Spacer(minLength: 8)
 
             commandButton(
-                title: "Show info",
+                title: toolbarString("Show info"),
                 systemImage: "info.circle",
                 command: .showInfo
             )
@@ -158,14 +162,14 @@ private struct GrandSnifferCommandBarView: View {
     @ViewBuilder
     private var searchField: some View {
         if #available(macOS 12.0, *) {
-            TextField("Filter files", text: $searchText)
+            TextField(toolbarString("Filter files"), text: $searchText)
                 .textFieldStyle(.roundedBorder)
                 .frame(minWidth: 150, idealWidth: 210, maxWidth: 260)
                 .onSubmit {
                     send(command: .search, userInfo: ["query": searchText])
                 }
         } else {
-            TextField("Filter files", text: $searchText, onCommit: {
+            TextField(toolbarString("Filter files"), text: $searchText, onCommit: {
                 send(command: .search, userInfo: ["query": searchText])
             })
             .textFieldStyle(.roundedBorder)

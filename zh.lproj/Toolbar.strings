@@ -73,3 +73,8 @@
 /* Toolbar action */
 "Zoom out" = "缩小";
 
+/* Toolbar action */
+"Clear search" = "清除搜索";
+
+/* Placeholder */
+"Filter files" = "筛选文件";

@@ -73,3 +73,8 @@
 /* Toolbar action */
 "Zoom out" = "Dézoomer";
 
+/* Toolbar action */
+"Clear search" = "Effacer la recherche";
+
+/* Placeholder */
+"Filter files" = "Filtrer les fichiers";
