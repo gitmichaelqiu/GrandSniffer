@@ -551,6 +551,22 @@ CGFloat ramp(CGFloat x, CGFloat minX, CGFloat maxX) {
   }
 }
 
+- (void) viewDidEndLiveResize {
+  [super viewDidEndLiveResize];
+
+  if (pathModelView == nil) {
+    return;
+  }
+
+  if (treeImage == nil || treeImageIsScaled ||
+      !NSEqualSizes(treeImage.size, self.bounds.size)) {
+    [self forceRedraw];
+  }
+  else {
+    [self refreshDisplay];
+  }
+}
+
 
 - (BOOL) isOpaque {
   // This setting was originally set to YES for performance reasons. The views contents are rendered
@@ -843,6 +859,13 @@ CGFloat ramp(CGFloat x, CGFloat minX, CGFloat maxX) {
     return;
   }
 
+  if (!NSEqualSizes([image size], self.bounds.size)) {
+    isTreeDrawInProgress = NO;
+    treeImageIsScaled = YES;
+    [self refreshDisplay];
+    return;
+  }
+
   // Note: This method is called from the main thread (even though it has been triggered by the
   // drawer's background thread). So calling setNeedsDisplay directly is okay.
   [treeImage release];
@@ -891,6 +914,13 @@ CGFloat ramp(CGFloat x, CGFloat minX, CGFloat maxX) {
 
 - (void) overlayImageReady:(id)image {
   if (image != nil) {
+    if (!NSEqualSizes([image size], self.bounds.size)) {
+      isOverlayDrawInProgress = NO;
+      overlayImageIsScaled = YES;
+      [self refreshDisplay];
+      return;
+    }
+
     [overlayImage release];
     overlayImage = [image retain];
     overlayImageIsScaled = NO;
